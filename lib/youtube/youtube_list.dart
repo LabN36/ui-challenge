@@ -136,7 +136,9 @@ class YTListItem {
                   color: Colors.grey,
                   borderRadius: const BorderRadius.all(Radius.circular(24)),
                   border: Border.all(
-                      color: Colors.white, strokeAlign: StrokeAlign.inside),
+                    color: Colors.white,
+                    strokeAlign: BorderSide.strokeAlignInside,
+                  ),
                 ),
                 child: IconButton(
                     color: Colors.white,
@@ -155,7 +157,9 @@ class YTListItem {
                   color: Colors.grey,
                   borderRadius: const BorderRadius.all(Radius.circular(24)),
                   border: Border.all(
-                      color: Colors.white, strokeAlign: StrokeAlign.inside),
+                    color: Colors.white,
+                    strokeAlign: BorderSide.strokeAlignInside,
+                  ),
                 ),
                 child: IconButton(
                     color: Colors.white,
