@@ -116,6 +116,7 @@ class _HomeWidgetState extends State<HomeWidget>
       if (i == 0) {
         listItems.add(YTListItem.listMultiGrid());
       } else if (i == 1) {
+        final data = YTData.getLikeData().sublist(10, 15);
         listItems.add(
           YTListItem.listSingleGrid(
             SingleGridItem(
@@ -124,6 +125,7 @@ class _HomeWidgetState extends State<HomeWidget>
                 actionButtonMessage: 'More',
               ),
             ),
+            data,
             gridSize: 150,
             gridWidth: 150,
           ),
@@ -131,12 +133,17 @@ class _HomeWidgetState extends State<HomeWidget>
       } else if (i == 2) {
         listItems.add(YTListItem.listPanel(YTData.getPanel1()));
       } else if (i == 3) {
-        listItems.add(YTListItem.listCarousel());
+        final data1 = YTData.getLikeData().sublist(19, 23);
+        final data2 = YTData.getLikeData().sublist(24, 28);
+        listItems.add(YTListItem.listCarousel(data1, data2));
       } else if (i == 4) {
         listItems.add(YTListItem.listPanel(YTData.getPanel2()));
       } else if (i == 5) {
-        listItems.add(YTListItem.listCarousel());
+        final data1 = YTData.getLikeData().sublist(5, 9);
+        final data2 = YTData.getLikeData().sublist(10, 14);
+        listItems.add(YTListItem.listCarousel(data1, data2));
       } else if (i == 6) {
+        final data = YTData.getLikeData().sublist(7, 12);
         listItems.add(
           YTListItem.listSingleGrid(
             SingleGridItem(
@@ -144,11 +151,13 @@ class _HomeWidgetState extends State<HomeWidget>
                 headMessage: 'Forgotten favorites',
               ),
             ),
+            data,
             gridSize: 150,
             gridWidth: 150,
           ),
         );
       } else if (i == 7) {
+        final data = YTData.getLikeData().sublist(18, 23);
         listItems.add(
           YTListItem.listSingleGrid(
             SingleGridItem(
@@ -157,6 +166,7 @@ class _HomeWidgetState extends State<HomeWidget>
                 actionButtonMessage: 'Play all',
               ),
             ),
+            data,
             gridSize: 150,
             gridWidth: 280,
           ),
@@ -224,6 +234,8 @@ class _HomeWidgetState extends State<HomeWidget>
 
   SingleChildScrollView mainBottomSheet(
       ScrollController scrollController, BuildContext context) {
+    const currentSongImage =
+        'https://github-production-user-asset-6210df.s3.amazonaws.com/10628287/268020593-16e105e9-dc11-4f11-9a13-8f320585a412.png';
     return SingleChildScrollView(
       controller: scrollController,
       child: Column(
@@ -276,8 +288,9 @@ class _HomeWidgetState extends State<HomeWidget>
                                   width: 40,
                                   color: Colors.grey,
                                   child: Center(
-                                    child: Icon(Icons.music_note),
-                                  ),
+                                      child: Image.network(currentSongImage)
+                                      //  Icon(Icons.music_note),
+                                      ),
                                 ),
                               ),
                             );
@@ -314,8 +327,9 @@ class _HomeWidgetState extends State<HomeWidget>
                                   width: 40,
                                   color: Colors.grey,
                                   child: Center(
-                                    child: Icon(Icons.music_note),
-                                  ),
+                                      child: Image.network(currentSongImage)
+                                      // Icon(Icons.music_note),
+                                      ),
                                 ),
                               );
                             },
@@ -503,7 +517,7 @@ class _HomeWidgetState extends State<HomeWidget>
                                         CrossAxisAlignment.start,
                                     children: [
                                       Text(
-                                        'Song Name Goes Here',
+                                        'Lean On(feat. MO)',
                                         style: TextStyle(
                                           fontWeight: FontWeight.bold,
                                           color: Colors.white,
@@ -513,7 +527,7 @@ class _HomeWidgetState extends State<HomeWidget>
                                         height: 4,
                                       ),
                                       Text(
-                                        'Song Description',
+                                        'Major Lazer & DJ Snake',
                                         style: TextStyle(
                                           color: Colors.white,
                                         ),

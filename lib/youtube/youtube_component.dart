@@ -258,7 +258,7 @@ class YTComponent {
                 colors: [Colors.white, Color.fromRGBO(200, 170, 75, 1)],
               )),
           child: Image.network(
-            'https://cataas.com/cat?type=sm',
+            data.headerImage,
             alignment: Alignment.center,
             fit: BoxFit.fill,
             loadingBuilder: (context, child, loadingProgress) {
@@ -301,8 +301,7 @@ class YTComponent {
     );
   }
 
-  static ListView trendItem() {
-    final data = YTData.getSongListWithDescription();
+  static ListView trendItem(List<MusicItem> data) {
     return ListView.builder(
       primary: false,
       shrinkWrap: true,
@@ -397,13 +396,13 @@ class YTComponent {
   }
 
   static ListView trackListWidget() {
+    final data = YTData.getLikeData().sublist(1);
     return ListView.builder(
-      itemCount: 200,
+      itemCount: data.length,
       itemBuilder: (context, index) {
         return Container(
           padding: const EdgeInsets.only(left: 4, right: 4, bottom: 4, top: 4),
-          child: YTComponent.trendItemItem(
-              YTData.getLikeData().first, Icons.drag_handle),
+          child: YTComponent.trendItemItem(data[index], Icons.drag_handle),
         );
       },
     );

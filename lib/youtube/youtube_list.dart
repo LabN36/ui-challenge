@@ -12,8 +12,9 @@ class YTListItem {
       mainAxisSize: MainAxisSize.min,
       children: [
         YTComponent.itemInfoRow(InfoHeader(
-          imagePath: 'https://cataas.com/cat?type=sm',
-          subHeadMessage: 'RISHABH AGRAWAL',
+          imagePath:
+              'https://avatars.githubusercontent.com/u/10628287?s=80&u=bd9501e861861c38f6454de39fd4f65cda63c5dd&v=4',
+          subHeadMessage: 'User Name',
           headMessage: 'Listen again',
           actionButtonMessage: 'More',
         )),
@@ -41,9 +42,9 @@ class YTListItem {
     );
   }
 
-  static Widget listSingleGrid(SingleGridItem singleGridItem,
+  static Widget listSingleGrid(
+      SingleGridItem singleGridItem, List<MusicItem> data,
       {required double gridSize, required double gridWidth}) {
-    final data = YTData.getLikeData();
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
@@ -53,7 +54,7 @@ class YTListItem {
           child: Container(
             padding: const EdgeInsets.only(top: 8, bottom: 8, left: 8),
             child: SingleChildScrollView(
-              physics: const PageScrollPhysics(),
+              // physics: const PageScrollPhysics(),
               scrollDirection: Axis.horizontal,
               child: Column(
                 mainAxisSize: MainAxisSize.min,
@@ -175,18 +176,15 @@ class YTListItem {
     );
   }
 
-  static Widget listCarousel() {
+  static Widget listCarousel(List<MusicItem> data1, List<MusicItem> data2) {
     return Column(
       children: [
-        SizedBox(
-          height: 60,
-          child: YTComponent.itemInfoRow(
-            InfoHeader(
-              subHeadMessage: 'FOR YOU',
-              headMessage: 'Trending songs',
-              actionButtonMessage: 'Play all',
-              imagePath: '',
-            ),
+        YTComponent.itemInfoRow(
+          InfoHeader(
+            subHeadMessage: 'FOR YOU',
+            headMessage: 'Trending songs',
+            actionButtonMessage: 'Play all',
+            imagePath: '',
           ),
         ),
         Container(
@@ -201,11 +199,11 @@ class YTListItem {
             ),
             scrollBehavior: CustomScrollBehavior(),
             children: [
-              YTComponent.trendItem(),
-              YTComponent.trendItem(),
-              YTComponent.trendItem(),
-              YTComponent.trendItem(),
-              YTComponent.trendItem(),
+              YTComponent.trendItem(data1),
+              YTComponent.trendItem(data2),
+              // YTComponent.trendItem(),
+              // YTComponent.trendItem(),
+              // YTComponent.trendItem(),
             ],
           ),
         ),
